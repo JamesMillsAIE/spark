@@ -22,6 +22,10 @@ void Application::Run()
 	m_config->Load();
 
 	m_screen->Open();
+
+	m_game->m_config = m_config;
+	m_game->m_screen = m_screen;
+
 	m_game->Init();
 
 	m_game->BeginPlay();

@@ -2,9 +2,11 @@
 
 #include <iostream>
 
+#include "Spark/Core/Screen.h"
+
 void TestGameInstance::BeginPlay()
 {
-	std::cout << "Begin play!\n";
+	GetScreen()->Quit();
 }
 
 void TestGameInstance::EndPlay()
