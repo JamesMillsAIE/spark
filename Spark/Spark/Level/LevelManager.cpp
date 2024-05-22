@@ -3,6 +3,7 @@
 #include <ranges>
 
 #include "ILevelBase.h"
+#include "Spark/Actors/ActorWorld.h"
 #include "Spark/Gameplay/GameInstance.h"
 
 LevelManager::LevelManager(GameInstance* _game)
@@ -30,7 +31,7 @@ void LevelManager::Tick(const float _dt)
 
 	for(const auto& level : m_openLevels)
 	{
-		//level->GetWorld()->Tick(_dt);
+		level->GetWorld()->Tick(_dt);
 		level->Tick(_dt);
 	}
 }
@@ -40,7 +41,7 @@ void LevelManager::Render() const
 	for(const auto& level : m_openLevels)
 	{
 		level->Render();
-		//level->GetWorld()->Render();
+		level->GetWorld()->Render();
 	}
 }
 

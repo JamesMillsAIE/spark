@@ -1,8 +1,7 @@
 #pragma once
 
-
 class LevelManager;
-
+class ActorWorld;
 
 class ILevelBase
 {
@@ -11,13 +10,13 @@ class ILevelBase
 public:
 	const char* Name() const;
 
-	//SceneObject* GetWorld() const;
+	ActorWorld* GetWorld() const;
 
 protected:
 	const char* m_name;
 
 	LevelManager* m_levelManager;
-	//SceneObject* m_world;
+	ActorWorld* m_world;
 
 protected:
 	ILevelBase(const char* _name);
