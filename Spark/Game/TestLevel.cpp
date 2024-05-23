@@ -14,15 +14,8 @@ void TestLevel::BeginPlay()
 	if (ActorWorld* world = GetWorld())
 	{
 		world->SpawnWithTransform(
-			new TestActor,
-			Vec2
-			{
-				static_cast<float>(GetScreenWidth()) * .5f,
-				static_cast<float>(GetScreenHeight()) * .5f,
-			},
-			0,
-			Vec2::one * 50.f
-			);
+			new TestActor, Vec2::zero, 0, Vec2::one * 2.f
+		);
 	}
 }
 

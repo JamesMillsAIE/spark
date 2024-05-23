@@ -1,5 +1,20 @@
 #include "TestActor.h"
 
+#include "Spark/Utility/Config.h"
+
+TestActor::TestActor()
+	:m_speed{ 0 }
+{
+}
+
+void TestActor::OnBeginPlay()
+{
+	if(Config* config = GetConfig())
+	{
+		m_speed = config->GetValue<float>("player", "speed");
+	}
+}
+
 void TestActor::OnTick(float _dt)
 {
 	const Vec2 modification =
@@ -9,7 +24,7 @@ void TestActor::OnTick(float _dt)
 	};
 
 	UpdateActorTransform(
-		Mat3::CreateTranslation(modification * _dt)
+		Mat3::CreateTranslation(modification * _dt * m_speed)
 	);
 }
 

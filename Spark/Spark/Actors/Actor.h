@@ -8,6 +8,9 @@
 
 using std::function;
 
+class Config;
+class Screen;
+
 class Actor
 {
 	friend class ActorWorld;
@@ -49,6 +52,9 @@ protected:
 	Mat3& Transform();
 	Mat3 GlobalTransform() const;
 
+	Config* GetConfig() const;
+	Screen* GetScreen() const;
+
 private:
 	list<function<void()>> m_childListChanges;
 
@@ -56,6 +62,9 @@ private:
 	list<Actor*> m_children;
 
 	Mat3 m_transform;
+
+	Config* m_config;
+	Screen* m_screen;
 
 private:
 	void ApplyListChanges();

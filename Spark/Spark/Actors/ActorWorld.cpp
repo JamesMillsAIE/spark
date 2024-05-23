@@ -20,7 +20,7 @@ void ActorWorld::Destroy(Actor* _actor)
 }
 
 ActorWorld::ActorWorld()
-	: m_root{ new Actor }
+	: m_root{ new Actor }, m_config{ nullptr }, m_screen{ nullptr }
 {
 }
 
@@ -49,6 +49,9 @@ void ActorWorld::Render() const
 
 void ActorWorld::AddActor(Actor* _actor, Actor* _parent)
 {
+	_actor->m_config = m_config;
+	_actor->m_screen = m_screen;
+
 	m_worldChanges.emplace_back([_actor, _parent, this]
 		{
 			_actor->SetParent(_parent);

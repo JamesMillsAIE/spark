@@ -54,6 +54,9 @@ void LevelManager::OpenLevel(const char* _name)
 	if (std::ranges::find(m_openLevels, level) != m_openLevels.end())
 		return;
 
+	level->m_world->m_config = m_config;
+	level->m_world->m_screen = m_screen;
+
 	m_openListChanges.emplace_back([level, this]
 		{
 			m_openLevels.emplace_back(level);
@@ -69,7 +72,7 @@ void LevelManager::ExitLevel(const char* _name)
 	ILevelBase* level = m_levels[_name];
 	if (std::ranges::find(m_openLevels, level) == m_openLevels.end())
 		return;
-
+	
 	m_openListChanges.emplace_back([level, this]
 		{
 			level->EndPlay();
@@ -84,6 +87,8 @@ void LevelManager::AddLevel(ILevelBase* _level)
 
 	m_levels[_level->Name()] = _level;
 	_level->m_levelManager = this;
+	_level->m_config = m_config;
+	_level->m_screen = m_screen;
 }
 
 Config* LevelManager::GetConfig() const

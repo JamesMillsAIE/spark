@@ -90,6 +90,16 @@ Mat3 Actor::GlobalTransform() const
 	return m_parent != nullptr ? m_transform * m_parent->m_transform : m_transform;
 }
 
+Config* Actor::GetConfig() const
+{
+	return m_config;
+}
+
+Screen* Actor::GetScreen() const
+{
+	return m_screen;
+}
+
 void Actor::ApplyListChanges()
 {
 	for (auto& change : m_childListChanges)

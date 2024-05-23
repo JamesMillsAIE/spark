@@ -10,5 +10,8 @@
     <Category title="application">
       <Value name="title" value="Spark Game" type="string"/>
     </Category>
+    <Category title="player">
+      <Value name="speed" value="5" type="float"/>
+    </Category>
   </Categories>
 </Config>

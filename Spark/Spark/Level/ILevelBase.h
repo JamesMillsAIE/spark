@@ -2,6 +2,8 @@
 
 class LevelManager;
 class ActorWorld;
+class Config;
+class Screen;
 
 class ILevelBase
 {
@@ -23,12 +25,20 @@ protected:
 	virtual ~ILevelBase();
 
 protected:
+	Config* GetConfig() const;
+	Screen* GetScreen() const;
+
+protected:
 	virtual void BeginPlay() = 0;
 
 	virtual void Tick(float _dt) = 0;
 	virtual void Render() = 0;
 
 	virtual void EndPlay() = 0;
+
+private:
+	Config* m_config;
+	Screen* m_screen;
 
 };
 

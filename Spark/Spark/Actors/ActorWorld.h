@@ -8,6 +8,8 @@
 using std::function;
 
 class Actor;
+class Config;
+class Screen;
 
 class ActorWorld
 {
@@ -31,6 +33,9 @@ private:
 	list<function<void()>> m_worldChanges;
 
 	Actor* m_root;
+
+	Config* m_config;
+	Screen* m_screen;
 
 private:
 	ActorWorld();
