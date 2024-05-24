@@ -2,11 +2,18 @@
 
 #include <iostream>
 
-#include "Spark/Core/Screen.h"
+#include "LevelNames.h"
+#include "TestLevel.h"
+#include "Spark/Level/LevelManager.h"
 
 void TestGameInstance::BeginPlay()
 {
-	GetScreen()->Quit();
+	if(LevelManager* levelManager = GetLevelManager())
+	{
+		levelManager->AddLevel(new TestLevel);
+
+		levelManager->OpenLevel(TEST_LEVEL);
+	}
 }
 
 void TestGameInstance::EndPlay()
