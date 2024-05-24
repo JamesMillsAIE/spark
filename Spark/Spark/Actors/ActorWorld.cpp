@@ -49,11 +49,11 @@ void ActorWorld::Render() const
 
 void ActorWorld::AddActor(Actor* _actor, Actor* _parent)
 {
-	_actor->m_config = m_config;
-	_actor->m_screen = m_screen;
-
 	m_worldChanges.emplace_back([_actor, _parent, this]
 		{
+			_actor->m_config = m_config;
+			_actor->m_screen = m_screen;
+
 			_actor->SetParent(_parent);
 			_actor->ApplyListChanges();
 

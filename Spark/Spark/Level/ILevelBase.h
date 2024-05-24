@@ -40,5 +40,10 @@ private:
 	Config* m_config;
 	Screen* m_screen;
 
+	bool m_isConfigured;
+
+private:
+	void Configure(Config* _config, Screen* _screen);
+
 };
 
